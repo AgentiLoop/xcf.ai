@@ -68,3 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 }); 
+// Keep --header-h in sync so the sticky promo banner sits right under the sticky header.
+(function () {
+  var header = document.querySelector('header');
+  if (!header) return;
+  function sync() { document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px'); }
+  sync();
+  if (window.ResizeObserver) new ResizeObserver(sync).observe(header); else window.addEventListener('resize', sync);
+})();

@@ -92,7 +92,8 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1rem 0;
-    position: relative;
+    position: sticky;
+    top: 0;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -1182,3 +1183,12 @@ footer p {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 110, 255, 0.2);
 } 
+/* Sticky promo banner: pinned directly under the sticky header (height set by js/main.js). */
+#promo.promo {
+    position: sticky;
+    top: var(--header-h, 0px);
+    z-index: 999;
+}
+html {
+    scroll-padding-top: calc(var(--header-h, 0px) + var(--promo-h, 0px));
+}
